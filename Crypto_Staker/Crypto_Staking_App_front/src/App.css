@@ -1,0 +1,28 @@
+.wallet {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.formitem {
+  position: relative;
+  top: 100px;
+}
+
+.tokenitems {
+  position: relative;
+  top: 150px;
+}
+
+.flex-space  {
+  display: flex !important;
+  justify-content: space-between !important;
+}
+
+.tokenamount {
+  size: 10px;
+}
+
+
+
+
