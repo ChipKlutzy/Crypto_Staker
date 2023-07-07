@@ -11,6 +11,7 @@ import {
   ListGroup,
   ListGroupItem,
 } from "reactstrap";
+import StakeItem from "./stakeItem";
 import axios from "axios";
 
 const StakeABI = require("./StakeApp.json");
@@ -28,14 +29,6 @@ function App() {
   const handleChange01 = (e) => {
     // 👇 Store the input value to local state
     setinputAddress(e.target.value);
-  };
-
-  // form value related variable
-  const [inputAmount, setinputAmount] = useState(0);
-
-  const handleChange02 = (e) => {
-    // 👇 Store the input value to local state
-    setinputAmount(e.target.value);
   };
 
   // to store token list from the database
@@ -133,29 +126,12 @@ function App() {
       <div className="tokenitems">
         <ListGroup>
           {stakedTokens.map((tokenObj) => (
-            <ListGroupItem key={tokenObj} className="flex-space">
-              {tokenObj.name}: {tokenObj.address}
-              <Input
-                className="tokenamount"
-                placeholder="amount"
-                size="sm"
-                type="number"
-                onChange={handleChange02}
-                value={inputAmount}
-              />
-              <Button
-                onClick={() => stake(tokenObj.address, inputAmount)}
-                color="info"
-              >
-                Stake
-              </Button>
-              <Button
-                onClick={() => unstake(tokenObj.address, inputAmount)}
-                color="dark"
-              >
-                Unstake
-              </Button>
-            </ListGroupItem>
+            <StakeItem
+              stake={stake}
+              unstake={unstake}
+              tokenObj={tokenObj}
+              key={tokenObj}
+            />
           ))}
         </ListGroup>
       </div>
